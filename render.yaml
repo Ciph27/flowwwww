@@ -1,0 +1,28 @@
+services:
+  - type: web
+    name: stockflow-africa
+    env: node
+    buildCommand: cd backend && npm install && npm run build && cd ../frontend && npm install && npm run build
+    startCommand: cd backend && npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
+      - key: DATABASE_URL
+        value: postgresql://postgres:Mativambira%4027@db.fejgmjjxudpnstdyldac.supabase.co:5432/postgres
+      - key: SUPABASE_URL
+        value: https://fejgmjjxudpnstdyldac.supabase.co
+      - key: SUPABASE_ANON_KEY
+        value: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZlamdtamp4dWRwbnN0ZHlsZGFjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTA1MTE3OTQsImV4cCI6MjEwNjA4Nzc5NH0.55Q8mU6hPN3ppvAySXx3bzeZy_7euTmnqE_OFnhpq5E
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        value: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZlamdtamp4dWRwbnN0ZHlsZGFjIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc5MDUxMTc5NCwiZXhwIjoyMTA2MDg3Nzk0fQ.Z5QB6qK4sXSmeSXcuXcbe2wT6im1u1b165z8ly5OvsY
+      - key: JWT_SECRET
+        value: stockflow_africa_production_jwt_secret_key_2024_secure
+      - key: JWT_EXPIRES_IN
+        value: 24h
+      - key: BCRYPT_ROUNDS
+        value: 12
+      - key: CORS_ORIGIN
+        value: https://stockflow-africa.onrender.com
+    healthCheckPath: /health
