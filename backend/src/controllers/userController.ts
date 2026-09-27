@@ -32,7 +32,7 @@ export class UserController {
   findById = async (req: Request, res: Response, next: NextFunction) => {
     try {
       const { id } = req.params;
-      const user = await this.userService.findById(id);
+      const user = await this.userService.findById(id as string);
       res.json(user);
     } catch (error) {
       next(error);
@@ -43,7 +43,7 @@ export class UserController {
     try {
       const { id } = req.params;
       const updateUserDto: UpdateUserDto = req.body;
-      const user = await this.userService.update(id, updateUserDto);
+      const user = await this.userService.update(id as string, updateUserDto);
       res.json(user);
     } catch (error) {
       next(error);
@@ -53,7 +53,7 @@ export class UserController {
   delete = async (req: Request, res: Response, next: NextFunction) => {
     try {
       const { id } = req.params;
-      await this.userService.delete(id);
+      await this.userService.delete(id as string);
       res.status(204).send();
     } catch (error) {
       next(error);

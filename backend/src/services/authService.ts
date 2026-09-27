@@ -73,7 +73,7 @@ export class AuthService {
 
     return jwt.sign(payload, secret, {
       expiresIn: process.env.JWT_EXPIRES_IN || '24h'
-    });
+    } as jwt.SignOptions);
   }
 
   async hashPassword(password: string): Promise<string> {

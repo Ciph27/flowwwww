@@ -32,7 +32,7 @@ export class DepartmentController {
   findById = async (req: Request, res: Response, next: NextFunction) => {
     try {
       const { id } = req.params;
-      const department = await this.departmentService.findById(id);
+      const department = await this.departmentService.findById(id as string);
       res.json(department);
     } catch (error) {
       next(error);
@@ -43,7 +43,7 @@ export class DepartmentController {
     try {
       const { id } = req.params;
       const updateDepartmentDto: UpdateDepartmentDto = req.body;
-      const department = await this.departmentService.update(id, updateDepartmentDto);
+      const department = await this.departmentService.update(id as string, updateDepartmentDto);
       res.json(department);
     } catch (error) {
       next(error);
@@ -53,7 +53,7 @@ export class DepartmentController {
   delete = async (req: Request, res: Response, next: NextFunction) => {
     try {
       const { id } = req.params;
-      await this.departmentService.delete(id);
+      await this.departmentService.delete(id as string);
       res.status(204).send();
     } catch (error) {
       next(error);

@@ -32,7 +32,7 @@ export class StoreController {
   findById = async (req: Request, res: Response, next: NextFunction) => {
     try {
       const { id } = req.params;
-      const store = await this.storeService.findById(id);
+      const store = await this.storeService.findById(id as string);
       res.json(store);
     } catch (error) {
       next(error);
@@ -43,7 +43,7 @@ export class StoreController {
     try {
       const { id } = req.params;
       const updateStoreDto: UpdateStoreDto = req.body;
-      const store = await this.storeService.update(id, updateStoreDto);
+      const store = await this.storeService.update(id as string, updateStoreDto);
       res.json(store);
     } catch (error) {
       next(error);
@@ -53,7 +53,7 @@ export class StoreController {
   delete = async (req: Request, res: Response, next: NextFunction) => {
     try {
       const { id } = req.params;
-      await this.storeService.delete(id);
+      await this.storeService.delete(id as string);
       res.status(204).send();
     } catch (error) {
       next(error);

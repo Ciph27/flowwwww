@@ -38,6 +38,8 @@
     "esbuild@0.28.2": true
   },
   "devDependencies": {
+    "@types/bcrypt": "^6.0.0",
+    "@types/cors": "^2.8.19",
     "tsx": "^4.23.15"
   }
 }
